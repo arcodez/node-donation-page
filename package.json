@@ -1,0 +1,12 @@
+{
+  "name": "node-donation-page",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/arcodez/node-donation-page.git",
+  "author": "arcodez <abelileitor123@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  }
+}
