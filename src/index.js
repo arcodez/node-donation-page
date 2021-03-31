@@ -33,5 +33,8 @@ app.use(session({
 //Routes
 app.use(require('./routes/index'))
 
+//Static Files
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.listen(3000)
 console.log("Server Listeninn on Port 3000")
