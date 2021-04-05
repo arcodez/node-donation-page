@@ -21,7 +21,7 @@ app.set('view engine', '.hbs');
 //middlewars
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use(methodOverride())
+app.use(methodOverride('_method'))
 app.use(session({
     secret: 'mysecretapp',
     resave:true,

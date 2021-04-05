@@ -1,0 +1,18 @@
+{{#each errors}}
+<h2>{{text}}</h2>
+{{/each}}
+
+
+<center>
+    <h1>Eliminar Usuario</h1>
+    <div class="container my-5">
+        <form action="/delete-user" method="DELETE" class="form-group">
+            <div class="">
+                <textarea name="id" placeholder="Id"></textarea>
+            </div>
+            <div class="">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</center>
