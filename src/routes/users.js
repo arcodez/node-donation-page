@@ -25,16 +25,16 @@ router.get("/new-user", (req, res) => {
 router.get("/delete-user", (req, res) => {
   res.render("users/delete-user");
 });
-
+/* No me quiere renderizar la vista del archivo en la carpeta */
 router.get('/users', async (req, res) => {
   const response = await pool.query("SELECT * FROM users;");
   const { name, email } = req.body;
   //console.log(response.rows);
   //res.send('All users')
-  res.render('/users/all-users', {
+ /*  res.render('/users/all-users', {
     name,
     email
-  })
+  }) */
   res.json(response.rows);
 });
 
