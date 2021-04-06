@@ -16,10 +16,11 @@ const getUsers = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { name, email } = req.body;
   const id = req.params.id;
+  const { name, email } = req.body;
   try {
-    await pool.query("UPDATE users SET name = $1, email = $2, WHERE id = $3", [name, email, id]);
+    const response = await pool.query("UPDATE users SET name = $1, email = $2 WHERE id = $3", [name, email, id]);
+    console.log(response)
     res.redirect('/users')
   } catch (error) {
     console.log(error)
