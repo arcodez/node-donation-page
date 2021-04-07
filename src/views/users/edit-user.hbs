@@ -1,0 +1,24 @@
+{{#each errors}}
+<h2>{{text}}</h2>
+{{/each}}
+
+<center>
+    {{#each User}}
+    <h1>Actulizar Usuario</h1>
+    <div class="container my-5">
+        <h1></h1>
+        <form action="/users/edit-user/{{id}}?_method=PUT" method="POST" class="form-group">
+        <input type="hidden" name="_method" value="PUT">
+            <div class="">
+                <input type="text" name="name" value="{{name}}" placeholder="Name" autofocus>
+            </div>
+            <div class="">
+                <textarea name="email" placeholder="Email">{{email}}</textarea>
+            </div>
+            <div class="">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    {{/each}}
+</center>

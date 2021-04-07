@@ -9,7 +9,7 @@ const pool = new Pool({
   password: "password",
   database: "donationpage",
   port: "5432",
-}); 
+});
 
 const {
   getUsers,
@@ -19,30 +19,27 @@ const {
   updateUser,
 } = require("../controllers/index.controller");
 
-router.get("/new-user", (req, res) => {
+/* Obtener Todos los Usuarios */
+router.get("/users", getUsers);
+
+/* Crear Usuario */
+router.get("/users/add", (req, res) => {
   res.render("users/new-user");
 });
-router.get("/delete-user", (req, res) => {
-  res.render("users/delete-user");
-});
-/* No me quiere renderizar la vista del archivo en la carpeta */
-router.get('/users', async (req, res) => {
-  const response = await pool.query("SELECT * FROM users;");
-  const { name, email } = req.body;
-  //console.log(response.rows);
-  //res.send('All users')
- /*  res.render('/users/all-users', {
-    name,
-    email
-  }) */
-  res.json(response.rows);
-});
+router.post("/users/new-user", createUser);
 
-//router.get("/users", getUsers);
-router.get("users:id", getUserById);
-router.post("/new-user", createUser);
-router.put("/users:id", updateUser);
-router.delete("/delete-user", deleteUser);
-//router.delete("/users:id", deleteUser);
+/* Eliminar Usuario */
+router.delete("/users/delete-user/:id", deleteUser);
+
+/* Editar Usuario */
+router.get('/users/edit/:id', async(req, res) => {
+  const id = req.params.id;
+  const response = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  User = (response.rows);
+  res.render("users/edit-user", { User });
+})
+router.put("/users/edit-user/:id", updateUser);
+
+//router.get("users:id", getUserById);
 
 module.exports = router;

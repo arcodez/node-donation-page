@@ -1,6 +1,15 @@
-<h1>All Users</h1>
-
-{{#each}}
-<h2>{{name}}</h2>
-<h3>{{email}}</h3>
-{{/each}
+<h2>Crear Usuario</h2>
+<a href="/users/add" class="bts btn-succes">Crear Usuario</a>
+{{#each Users}}
+<h5>{{name}}</h5>
+{{!-- <br> --}}
+<h6>{{email}}</h6>
+<a href="/users/edit/{{id}}" class="btn btn-success">Update</a>
+<form action="/users/delete-user/{{id}}?_method=DELETE" method="POST">
+<input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>
+{{else}}
+<h2>No existen Usuarios</h2>
+<a href="/users/add" class="btn btn-sucess">Crea Uno</a>
+{{/each}}
