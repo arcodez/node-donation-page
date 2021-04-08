@@ -89,7 +89,8 @@ a.filled-button:hover {
 }
 
 .products-heading {
-	background-image: url(../images/products-heading.jpg);
+	/* background-image: url(../images/products-heading.jpg); */
+	background-image: url(https://staminamarketing.com/blog/wp-content/uploads/2020/06/tipos-de-productos-woocommerce.jpg);
 }
 
 .about-heading {

@@ -3,7 +3,6 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
-
 //Initiliazations
 const app = express()
 
@@ -37,5 +36,6 @@ app.use(require('./routes/users'))
 //Static Files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(3000)
-console.log("Server Listeninn on Port 3000")
+app.listen(app.get('port'), ()=> {
+    console.log(`server on port ${app.get('port')}`)
+})
