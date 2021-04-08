@@ -12,7 +12,7 @@ const {
   deleteUser,
   getUserById,
   updateUser,
-} = require("../controllers/index.controller");
+} = require("../controllers/users.controller");
 
 /* Obtener Todos los Usuarios */
 router.get("/users", getUsers);
