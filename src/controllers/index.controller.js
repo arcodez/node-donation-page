@@ -1,12 +1,7 @@
-const { Pool } = require("pg");
+const { initDB } = require("../helpers/intiDB");
 
-const pool = new Pool({
-  host: "localhost",
-  user: "postgres",
-  password: "password",
-  database: "donationpage",
-  port: "5432",
-});
+/* Conexion a la base de datos */
+const pool = initDB();
 
 const getUsers = async (req, res) => {
   const response = await pool.query("SELECT * FROM users;");

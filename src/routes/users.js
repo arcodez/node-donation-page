@@ -1,15 +1,10 @@
 const { Router } = require("express");
 const router = Router();
-const { Pool } = require("pg");
+
+const { initDB } = require("../helpers/intiDB");
 
 /* Conexion a la base de datos */
-const pool = new Pool({
-  host: "localhost",
-  user: "postgres",
-  password: "password",
-  database: "donationpage",
-  port: "5432",
-});
+const pool = initDB();
 
 const {
   getUsers,
