@@ -1,8 +1,7 @@
-{{#each errors}}
-<h2>{{text}}</h2>
-{{/each}}
-
 <center>
+    {{#each errores}}
+    <h2>{{text}}</h2>
+    {{/each}}
     <h1>Crear Usuario</h1>
     <div class="container my-5">
         <form action="/users/new-user" method="POST" class="form-group">

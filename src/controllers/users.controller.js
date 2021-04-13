@@ -31,27 +31,31 @@ const getUserById = async (req, res) => {
   res.json(response.rows);
 };
 
-const createUser = async (req, res) => {
+const createUser = (req, res) => {
   const { name, email } = req.body;
-  const errors = [];
-  if (!name) {
-    errors.push({ text: "Please Insert a Name" });
+  const Errors = async (nombre, correo) => {
+    const errores = [];
+    if (!nombre) {
+      errores.push({ text: "Please Insert a Name" });
+    }
+    if (!correo) {
+      errores.push({ text: "Please Insert a Email" });
+    }
+    if (errores.length > 0) {
+      res.render("users/new-user", {
+        errores,
+        correo,
+        nombre,
+      });
+    } else {
+      response = await pool.query("INSERT INTO users (name, email) VALUES ($1, $2)", [nombre, correo]);
+      console.log(nombre, correo)
+      console.log("User created sucessfully");
+      res.redirect('/users');
+    }
+    return errores;
   }
-  if (!email) {
-    errors.push({ text: "Please Insert a Email" });
-  }
-  if (errors.length > 0) {
-    res.render("users/new-user", {
-      errors,
-      email,
-      name,
-    });
-  } else {
-    response = await pool.query("INSERT INTO users (name, email) VALUES ($1, $2)", [name, email]);
-    console.log(name, email)
-    console.log("User created sucessfully");
-    res.redirect('/users');
-  }
+  Errors(name, email)
 };
 
 const deleteUser = async (req, res) => {
