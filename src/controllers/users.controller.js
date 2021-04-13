@@ -52,7 +52,7 @@ const createUser = (req, res) => {
       console.log(nombre, correo)
       console.log("User created sucessfully");
       res.redirect('/users');
-    }
+    } 
     return errores;
   }
   Errors(name, email)
